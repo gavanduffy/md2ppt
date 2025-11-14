@@ -1,0 +1,51 @@
+{
+  "name": "unified-powerpoint-mcp",
+  "version": "1.0.0",
+  "description": "Unified PowerPoint creation MCP server with markdown, tools, and Material Design",
+  "main": "server.py",
+  "type": "stdio",
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false
+  },
+  "tools": {
+    "markdown": [
+      "convert_markdown_to_pptx",
+      "convert_markdown_file_to_pptx",
+      "validate_markdown_presentation"
+    ],
+    "presentation": [
+      "create_presentation",
+      "save_presentation",
+      "merge_presentations",
+      "export_as_pdf"
+    ],
+    "slides": [
+      "add_title_slide",
+      "add_content_slide",
+      "add_chart_slide",
+      "add_smart_art",
+      "add_timeline_slide",
+      "add_comparison_slide",
+      "add_quote_slide",
+      "add_agenda_slide",
+      "add_swot_analysis"
+    ],
+    "material_design": [
+      "apply_material_theme",
+      "get_material_color_palette",
+      "get_design_advice",
+      "check_accessibility"
+    ],
+    "enhancements": [
+      "add_slide_notes",
+      "add_footer",
+      "add_qr_code"
+    ]
+  },
+  "install": {
+    "dependencies": "requirements.txt",
+    "command": "pip install -r requirements.txt"
+  }
+}

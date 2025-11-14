@@ -25,9 +25,11 @@ from pptx.enum.text import PP_ALIGN, MSO_ANCHOR, MSO_AUTO_SIZE
 from pptx.enum.shapes import MSO_SHAPE
 from pptx.chart.data import CategoryChartData
 from pptx.enum.chart import XL_CHART_TYPE
-import markdown
+try:
+    import markdown
+except ImportError:
+    print("Warning: markdown module not found. Install with: pip install markdown")
 from PIL import Image
-import mcp.types as types
 
 class SlideType(Enum):
     """Supported slide types"""
@@ -1064,119 +1066,12 @@ class MarkdownToPowerPoint:
 
         return await self.convert(content, output_path)
 
-# MCP Server Integration
-class MarkdownPowerPointMCPExtension:
-    """MCP extension for Markdown to PowerPoint conversion"""
-
-    def __init__(self, server):
-        self.server = server
-        self.converter = MarkdownToPowerPoint()
-
-    def add_markdown_tools(self):
-        """Add Markdown conversion tools to MCP server"""
-
-        @self.server.server.list_tools()
-        async def handle_list_markdown_tools() -> list[types.Tool]:
-            return [
-                types.Tool(
-                    name="convert_markdown_to_pptx",
-                    description="Convert Markdown content to PowerPoint presentation",
-                    inputSchema={
-                        "type": "object",
-                        "properties": {
-                            "markdown_content": {
-                                "type": "string",
-                                "description": "Markdown content with PowerPoint tags"
-                            },
-                            "output_path": {
-                                "type": "string",
-                                "description": "Path for output .pptx file"
-                            },
-                            "template": {
-                                "type": "string",
-                                "description": "Template to use: default, corporate, creative, academic",
-                                "default": "default"
-                            }
-                        },
-                        "required": ["markdown_content", "output_path"]
-                    }
-                ),
-
-                types.Tool(
-                    name="convert_markdown_file_to_pptx",
-                    description="Convert Markdown file to PowerPoint presentation",
-                    inputSchema={
-                        "type": "object",
-                        "properties": {
-                            "markdown_file": {
-                                "type": "string",
-                                "description": "Path to markdown file"
-                            },
-                            "output_path": {
-                                "type": "string",
-                                "description": "Path for output .pptx file"
-                            }
-                        },
-                        "required": ["markdown_file", "output_path"]
-                    }
-                ),
-
-                types.Tool(
-                    name="validate_markdown_presentation",
-                    description="Validate Markdown presentation syntax",
-                    inputSchema={
-                        "type": "object",
-                        "properties": {
-                            "markdown_content": {
-                                "type": "string",
-                                "description": "Markdown content to validate"
-                            }
-                        },
-                        "required": ["markdown_content"]
-                    }
-                )
-            ]
-
-        @self.server.call_tool()
-        async def handle_markdown_tools(name: str, arguments: Optional[Dict[str, Any]]) -> list[types.TextContent]:
-            if name == "convert_markdown_to_pptx":
-                result = await self.converter.convert(
-                    arguments["markdown_content"],
-                    arguments["output_path"]
-                )
-                return [types.TextContent(
-                    type="text",
-                    text=json.dumps(result, indent=2)
-                )]
-
-            elif name == "convert_markdown_file_to_pptx":
-                result = await self.converter.convert_file(
-                    arguments["markdown_file"],
-                    arguments["output_path"]
-                )
-                return [types.TextContent(
-                    type="text",
-                    text=json.dumps(result, indent=2)
-                )]
-
-            elif name == "validate_markdown_presentation":
-                try:
-                    config, slides = self.converter.parser.parse(arguments["markdown_content"])
-                    return [types.TextContent(
-                        type="text",
-                        text=json.dumps({
-                            "valid": True,
-                            "slide_count": len(slides),
-                            "title": config.title,
-                            "slides": [{"type": s.type.value, "title": s.title} for s in slides]
-                        }, indent=2)
-                    )]
-                except Exception as e:
-                    return [types.TextContent(
-                        type="text",
-                        text=json.dumps({
-                            "valid": False,
-                            "error": str(e)
-                        }, indent=2)
-                    )]
-
+# Export classes for unified server
+__all__ = [
+    'SlideType',
+    'SlideConfig',
+    'PresentationConfig',
+    'MarkdownPresentationParser',
+    'PowerPointGenerator',
+    'MarkdownToPowerPoint'
+]

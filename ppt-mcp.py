@@ -16,10 +16,14 @@ import tempfile
 import shutil
 import zipfile
 
-from mcp.server.models import InitializationOptions
-from mcp.server import NotificationOptions, Server
-from mcp.server.stdio import stdio_server
-import mcp.types as types
+try:
+    from mcp.server.models import InitializationOptions
+    from mcp.server import NotificationOptions, Server
+    from mcp.server.stdio import stdio_server
+    import mcp.types as types
+except ImportError:
+    print("Warning: mcp module not found. Install with: pip install mcp")
+    raise
 
 from pptx import Presentation
 from pptx.util import Inches, Pt, Cm, Mm
@@ -1484,3 +1488,6 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
+# Export for unified server
+__all__ = ['ExtendedPowerPointServer']

@@ -1,0 +1,76 @@
+{
+  "mcpServers": {
+    "unified-powerpoint": {
+      "command": "python3",
+      "args": ["unified_pptx_server.py"],
+      "cwd": "/workspaces/md2ppt",
+      "env": {},
+      "description": "Unified PowerPoint creation server with markdown conversion, MCP tools, and Material Design"
+    }
+  },
+  "server": {
+    "name": "unified-powerpoint-mcp",
+    "version": "1.0.0",
+    "description": "Create PowerPoint presentations using markdown, granular tools, or Material Design themes",
+    "capabilities": {
+      "markdown_conversion": true,
+      "granular_tools": true,
+      "material_design": true,
+      "accessibility_checking": true,
+      "multi_format_export": true
+    }
+  },
+  "templates": {
+    "corporate": {
+      "colors": {
+        "primary": "003366",
+        "secondary": "0066CC",
+        "accent": "FF6600"
+      },
+      "fonts": {
+        "title": "Arial Black",
+        "body": "Arial"
+      }
+    },
+    "creative": {
+      "colors": {
+        "primary": "FF1744",
+        "secondary": "AA00FF",
+        "accent": "00E676"
+      },
+      "fonts": {
+        "title": "Impact",
+        "body": "Century Gothic"
+      }
+    },
+    "academic": {
+      "colors": {
+        "primary": "1A237E",
+        "secondary": "3F51B5",
+        "accent": "FFC107"
+      },
+      "fonts": {
+        "title": "Times New Roman",
+        "body": "Calibri"
+      }
+    },
+    "minimalist": {
+      "colors": {
+        "primary": "000000",
+        "secondary": "666666",
+        "accent": "FFFFFF"
+      },
+      "fonts": {
+        "title": "Helvetica",
+        "body": "Helvetica Light"
+      }
+    }
+  },
+  "material_themes": [
+    "material_baseline",
+    "material_dark",
+    "google_blue",
+    "spotify_green",
+    "notion_minimal"
+  ]
+}

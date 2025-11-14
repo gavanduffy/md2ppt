@@ -1,0 +1,27 @@
+# Core MCP Framework
+mcp
+
+# PowerPoint Creation
+python-pptx>=0.6.21
+
+# Image Processing
+Pillow>=10.0.0
+
+# Data Processing & Visualization
+numpy>=1.24.0
+matplotlib>=3.7.0
+
+# QR Code Generation
+qrcode[pil]>=7.4.2
+
+# Markdown Processing
+markdown>=3.4.0
+pyyaml>=6.0
+
+# PDF Export (optional)
+reportlab>=4.0.0
+PyPDF2>=3.0.0
+
+# Document Processing (optional)
+python-docx>=0.8.11
+openpyxl>=3.1.0

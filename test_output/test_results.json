@@ -1,0 +1,247 @@
+{
+  "timestamp": "2025-11-14T03:34:44.222452",
+  "total_tests": 34,
+  "passed": 34,
+  "failed": 0,
+  "errors": [],
+  "test_details": [
+    {
+      "id": "MODULE IMPORTS.server.py import",
+      "name": "server.py import",
+      "status": "PASS",
+      "category": "MODULE IMPORTS",
+      "result": "UnifiedPowerPointMCPServer imported"
+    },
+    {
+      "id": "MODULE IMPORTS.md2ppt.py import",
+      "name": "md2ppt.py import",
+      "status": "PASS",
+      "category": "MODULE IMPORTS",
+      "result": "md2ppt modules imported"
+    },
+    {
+      "id": "MODULE IMPORTS.ppt-mcp.py import",
+      "name": "ppt-mcp.py import",
+      "status": "PASS",
+      "category": "MODULE IMPORTS",
+      "result": "ExtendedPowerPointServer imported"
+    },
+    {
+      "id": "MODULE IMPORTS.material-design.py import",
+      "name": "material-design.py import",
+      "status": "PASS",
+      "category": "MODULE IMPORTS",
+      "result": "Material Design modules imported"
+    },
+    {
+      "id": "MARKDOWN CONVERSION.Basic markdown conversion",
+      "name": "Basic markdown conversion",
+      "status": "PASS",
+      "category": "MARKDOWN CONVERSION",
+      "result": "Created test_basic_markdown.pptx (28334 bytes)"
+    },
+    {
+      "id": "MARKDOWN CONVERSION.Chart in markdown",
+      "name": "Chart in markdown",
+      "status": "PASS",
+      "category": "MARKDOWN CONVERSION",
+      "result": "Created test_chart_markdown.pptx with chart"
+    },
+    {
+      "id": "MARKDOWN CONVERSION.Markdown file conversion",
+      "name": "Markdown file conversion",
+      "status": "PASS",
+      "category": "MARKDOWN CONVERSION",
+      "result": "Created test_from_file.pptx from markdown file"
+    },
+    {
+      "id": "MARKDOWN CONVERSION.Markdown validation",
+      "name": "Markdown validation",
+      "status": "PASS",
+      "category": "MARKDOWN CONVERSION",
+      "result": "Validated: 4 slides, title='Presentation'"
+    },
+    {
+      "id": "MCP TOOLS - BASIC SLIDES.Create presentation",
+      "name": "Create presentation",
+      "status": "PASS",
+      "category": "MCP TOOLS - BASIC SLIDES",
+      "result": "Created presentation 'test_mcp' (16:9, corporate template)"
+    },
+    {
+      "id": "MCP TOOLS - BASIC SLIDES.Add title slide",
+      "name": "Add title slide",
+      "status": "PASS",
+      "category": "MCP TOOLS - BASIC SLIDES",
+      "result": "Added title slide: MCP Test Presentation"
+    },
+    {
+      "id": "MCP TOOLS - BASIC SLIDES.Add content slide",
+      "name": "Add content slide",
+      "status": "PASS",
+      "category": "MCP TOOLS - BASIC SLIDES",
+      "result": "Added content slide: Test Content"
+    },
+    {
+      "id": "MCP TOOLS - BASIC SLIDES.Add chart slide",
+      "name": "Add chart slide",
+      "status": "PASS",
+      "category": "MCP TOOLS - BASIC SLIDES",
+      "result": "Added column chart: Sales Chart"
+    },
+    {
+      "id": "MCP TOOLS - BASIC SLIDES.Save presentation",
+      "name": "Save presentation",
+      "status": "PASS",
+      "category": "MCP TOOLS - BASIC SLIDES",
+      "result": "Saved to test_mcp_basic.pptx (36323 bytes)"
+    },
+    {
+      "id": "MCP TOOLS - ADVANCED SLIDES.SmartArt diagram",
+      "name": "SmartArt diagram",
+      "status": "PASS",
+      "category": "MCP TOOLS - ADVANCED SLIDES",
+      "result": "Added process SmartArt with 4 items"
+    },
+    {
+      "id": "MCP TOOLS - ADVANCED SLIDES.Timeline slide",
+      "name": "Timeline slide",
+      "status": "PASS",
+      "category": "MCP TOOLS - ADVANCED SLIDES",
+      "result": "Added timeline with 3 events"
+    },
+    {
+      "id": "MCP TOOLS - ADVANCED SLIDES.Comparison slide",
+      "name": "Comparison slide",
+      "status": "PASS",
+      "category": "MCP TOOLS - ADVANCED SLIDES",
+      "result": "Added comparison slide with 2 items"
+    },
+    {
+      "id": "MCP TOOLS - ADVANCED SLIDES.Quote slide",
+      "name": "Quote slide",
+      "status": "PASS",
+      "category": "MCP TOOLS - ADVANCED SLIDES",
+      "result": "Added quote slide from Software Engineer"
+    },
+    {
+      "id": "MCP TOOLS - ADVANCED SLIDES.Save advanced slides",
+      "name": "Save advanced slides",
+      "status": "PASS",
+      "category": "MCP TOOLS - ADVANCED SLIDES",
+      "result": "Saved 4 slides to test_mcp_advanced.pptx"
+    },
+    {
+      "id": "MCP TOOLS - ENHANCEMENTS.Add slide notes",
+      "name": "Add slide notes",
+      "status": "PASS",
+      "category": "MCP TOOLS - ENHANCEMENTS",
+      "result": "Added notes to slide 0"
+    },
+    {
+      "id": "MCP TOOLS - ENHANCEMENTS.Add QR code",
+      "name": "Add QR code",
+      "status": "PASS",
+      "category": "MCP TOOLS - ENHANCEMENTS",
+      "result": "Added QR code to slide 1"
+    },
+    {
+      "id": "MCP TOOLS - ENHANCEMENTS.Add watermark",
+      "name": "Add watermark",
+      "status": "PASS",
+      "category": "MCP TOOLS - ENHANCEMENTS",
+      "result": "Added watermark 'CONFIDENTIAL' to all slides"
+    },
+    {
+      "id": "MCP TOOLS - ENHANCEMENTS.Save enhanced",
+      "name": "Save enhanced",
+      "status": "PASS",
+      "category": "MCP TOOLS - ENHANCEMENTS",
+      "result": "Saved to test_mcp_enhanced.pptx"
+    },
+    {
+      "id": "MATERIAL DESIGN.Generate color palette",
+      "name": "Generate color palette",
+      "status": "PASS",
+      "category": "MATERIAL DESIGN",
+      "result": "Generated 4 color palettes"
+    },
+    {
+      "id": "MATERIAL DESIGN.Create Material You theme",
+      "name": "Create Material You theme",
+      "status": "PASS",
+      "category": "MATERIAL DESIGN",
+      "result": "Created theme: Material You Dynamic"
+    },
+    {
+      "id": "MATERIAL DESIGN.List predefined themes",
+      "name": "List predefined themes",
+      "status": "PASS",
+      "category": "MATERIAL DESIGN",
+      "result": "Available themes: material_baseline, material_dark, google_blue, spotify_green, notion_minimal"
+    },
+    {
+      "id": "MATERIAL DESIGN.Check accessibility",
+      "name": "Check accessibility",
+      "status": "PASS",
+      "category": "MATERIAL DESIGN",
+      "result": "Best text color: #FFFFFF"
+    },
+    {
+      "id": "MATERIAL DESIGN.Get layout advice",
+      "name": "Get layout advice",
+      "status": "PASS",
+      "category": "MATERIAL DESIGN",
+      "result": "Tips: 3"
+    },
+    {
+      "id": "MATERIAL DESIGN.Apply theme to presentation",
+      "name": "Apply theme to presentation",
+      "status": "PASS",
+      "category": "MATERIAL DESIGN",
+      "result": "Applied Google Blue theme to test_material_themed.pptx"
+    },
+    {
+      "id": "UNIFIED SERVER INTEGRATION.Markdown via unified server",
+      "name": "Markdown via unified server",
+      "status": "PASS",
+      "category": "UNIFIED SERVER INTEGRATION",
+      "result": "Created test_unified_markdown.pptx via unified server"
+    },
+    {
+      "id": "UNIFIED SERVER INTEGRATION.MCP tools via unified server",
+      "name": "MCP tools via unified server",
+      "status": "PASS",
+      "category": "UNIFIED SERVER INTEGRATION",
+      "result": "Created via unified server tools: test_unified_tools.pptx"
+    },
+    {
+      "id": "UNIFIED SERVER INTEGRATION.Material Design via unified server",
+      "name": "Material Design via unified server",
+      "status": "PASS",
+      "category": "UNIFIED SERVER INTEGRATION",
+      "result": "Got color advice for #4CAF50"
+    },
+    {
+      "id": "UNIFIED SERVER INTEGRATION.Design advice via unified server",
+      "name": "Design advice via unified server",
+      "status": "PASS",
+      "category": "UNIFIED SERVER INTEGRATION",
+      "result": "Got design advice for corporate context"
+    },
+    {
+      "id": "UNIFIED SERVER INTEGRATION.Validate markdown via unified server",
+      "name": "Validate markdown via unified server",
+      "status": "PASS",
+      "category": "UNIFIED SERVER INTEGRATION",
+      "result": "Validated markdown: 2 slides"
+    },
+    {
+      "id": "UNIFIED SERVER INTEGRATION.Hybrid workflow",
+      "name": "Hybrid workflow",
+      "status": "PASS",
+      "category": "UNIFIED SERVER INTEGRATION",
+      "result": "Hybrid workflow: markdown + tools \u2192 test_hybrid_workflow.pptx"
+    }
+  ]
+}

@@ -14,7 +14,23 @@ import random
 from pptx.util import Inches, Pt
 from pptx.dml.color import RGBColor
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
-import mcp.types as types
+
+# Try to import MCP types, but allow fallback for standalone use
+try:
+    from mcp import types
+except ImportError:
+    # Create minimal type stubs for standalone use
+    class types:
+        class Tool:
+            def __init__(self, name, description, inputSchema):
+                self.name = name
+                self.description = description
+                self.inputSchema = inputSchema
+        
+        class TextContent:
+            def __init__(self, type, text):
+                self.type = type
+                self.text = text
 
 class MaterialColorPalette(Enum):
     """Material Design 3 Color Palettes"""
@@ -253,26 +269,29 @@ class MaterialDesignThemes:
             {"elevation": 24, "shadow": "0px 11px 15px -7px rgba(0,0,0,0.2)"}
         ]
 
-    THEMES = {
-        "material_baseline": MaterialTheme(
-            name="Material Baseline",
-            primary_color="6200EE",
-            primary_variant="3700B3",
-            secondary_color="03DAC6",
-            secondary_variant="018786",
-            background="FFFFFF",
-            surface="FFFFFF",
-            error="B00020",
-            on_primary="FFFFFF",
-            on_secondary="000000",
-            on_background="000000",
-            on_surface="000000",
-            on_error="FFFFFF",
-            typography=_get_typography.__func__(None),
-            elevation_shadows=_get_shadows.__func__(None),
-            spacing={"xs": 0.25, "sm": 0.5, "md": 1.0, "lg": 1.5, "xl": 2.0},
-            corner_radius=0.25
-        ),
+    @staticmethod
+    def _get_all_themes():
+        """Get all predefined themes - called after class is fully defined"""
+        return {
+            "material_baseline": MaterialTheme(
+                name="Material Baseline",
+                primary_color="6200EE",
+                primary_variant="3700B3",
+                secondary_color="03DAC6",
+                secondary_variant="018786",
+                background="FFFFFF",
+                surface="FFFFFF",
+                error="B00020",
+                on_primary="FFFFFF",
+                on_secondary="000000",
+                on_background="000000",
+                on_surface="000000",
+                on_error="FFFFFF",
+                typography=MaterialDesignThemes._get_typography(),
+                elevation_shadows=MaterialDesignThemes._get_shadows(),
+                spacing={"xs": 0.25, "sm": 0.5, "md": 1.0, "lg": 1.5, "xl": 2.0},
+                corner_radius=0.25
+            ),
 
         "material_dark": MaterialTheme(
             name="Material Dark",
@@ -288,8 +307,8 @@ class MaterialDesignThemes:
             on_background="FFFFFF",
             on_surface="FFFFFF",
             on_error="000000",
-            typography=_get_typography.__func__(None),
-            elevation_shadows=_get_shadows.__func__(None),
+            typography=MaterialDesignThemes._get_typography(),
+            elevation_shadows=MaterialDesignThemes._get_shadows(),
             spacing={"xs": 0.25, "sm": 0.5, "md": 1.0, "lg": 1.5, "xl": 2.0},
             corner_radius=0.25
         ),
@@ -308,8 +327,8 @@ class MaterialDesignThemes:
             on_background="202124",
             on_surface="202124",
             on_error="FFFFFF",
-            typography=_get_typography.__func__(None),
-            elevation_shadows=_get_shadows.__func__(None),
+            typography=MaterialDesignThemes._get_typography(),
+            elevation_shadows=MaterialDesignThemes._get_shadows(),
             spacing={"xs": 0.25, "sm": 0.5, "md": 1.0, "lg": 1.5, "xl": 2.0},
             corner_radius=0.5
         ),
@@ -328,8 +347,8 @@ class MaterialDesignThemes:
             on_background="FFFFFF",
             on_surface="FFFFFF",
             on_error="FFFFFF",
-            typography=_get_typography.__func__(None),
-            elevation_shadows=_get_shadows.__func__(None),
+            typography=MaterialDesignThemes._get_typography(),
+            elevation_shadows=MaterialDesignThemes._get_shadows(),
             spacing={"xs": 0.25, "sm": 0.5, "md": 1.0, "lg": 1.5, "xl": 2.0},
             corner_radius=0.5
         ),
@@ -348,12 +367,22 @@ class MaterialDesignThemes:
             on_background="37352F",
             on_surface="37352F",
             on_error="FFFFFF",
-            typography=_get_typography.__func__(None),
-            elevation_shadows=_get_shadows.__func__(None),
+            typography=MaterialDesignThemes._get_typography(),
+            elevation_shadows=MaterialDesignThemes._get_shadows(),
             spacing={"xs": 0.25, "sm": 0.5, "md": 1.0, "lg": 1.5, "xl": 2.0},
             corner_radius=0.2
         )
-    }
+        }
+    
+    # Cache for themes
+    _THEMES_CACHE = None
+    
+    @classmethod
+    def get_themes(cls):
+        """Get all predefined themes (cached)"""
+        if cls._THEMES_CACHE is None:
+            cls._THEMES_CACHE = cls._get_all_themes()
+        return cls._THEMES_CACHE
 
 class MaterialDesignAdvisor:
     """Provides Material Design advice and best practices"""
@@ -754,7 +783,7 @@ class MaterialDesignPowerPointExtension:
         if theme_name == "custom" and "seed_color" in args:
             theme = MaterialDesignThemes.get_material_you_theme(args["seed_color"])
         else:
-            theme = MaterialDesignThemes.THEMES.get(theme_name)
+            theme = MaterialDesignThemes.get_themes().get(theme_name)
             if not theme:
                 raise ValueError(f"Unknown theme: {theme_name}")
 
@@ -1099,10 +1128,11 @@ class MaterialDesignPowerPointExtension:
         # Implementation for component samples
         pass
 
-# Integration function to add Material Design capabilities to main server
-def integrate_material_design(server_instance):
-    """Integrate Material Design extension into main PowerPoint server"""
-    extension = MaterialDesignPowerPointExtension(server_instance)
-    extension.add_material_tools()
-    return extension
-
+# Export classes for unified server
+__all__ = [
+    'MaterialColorPalette',
+    'MaterialTheme',
+    'MaterialDesignThemes',
+    'MaterialDesignAdvisor',
+    'MaterialDesignPowerPointExtension'
+]
